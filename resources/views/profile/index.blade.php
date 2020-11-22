@@ -53,7 +53,6 @@
                       <div class="col-sm-12 col-md-6">
                         <div class="dataTables_filter">
                           <label for="">
-                            
                             <form action="/profile/cari" method="GET">
                             <input type="text" name="cari" placeholder="Nama/Tahun Lulus" class="form-control form-control-sm" id="cari">
                             <button style="margin-bottom:3px;" class="btn btn-sm btn-success form-contol" type="submit">

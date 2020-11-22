@@ -4,20 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Profile;
+use App\Models\Jenis;
 
-class ProfileController extends Controller
+class JenisController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {   
-        $search = $request->get('search');
-        $data_alumni = DB::table('data_alumni')->paginate(2);
-        return view('profile.index', ['data_alumni' => $data_alumni]);
+    public function index()
+    {
+        $jenis_jawaban = DB::table('jenis_jawaban');
+        return view('jenis.index', ['jenis_jawaban' => $jenis_jawaban]);
     }
 
     /**
@@ -25,27 +24,9 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function detail()
-    {
-        return view('profile.detail');
-    }
-
-    public function cari(Request $request)
-    {
-        $cari = $request->cari;
- 
-        $data_alumni = DB::table('data_alumni')
-        ->where('nama','like',"%".$cari."%")
-        ->paginate(2);
- 
-        return view('profile.index',['data_alumni' => $data_alumni]);
- 
-    }
-
     public function create()
     {
-        
+        return view('jenis.create');
     }
 
     /**
@@ -56,7 +37,8 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-       
+        Jenis::create(['jenis_jawaban' => $request->jenis_jawaban]);
+        return redirect()->route('jenis.index')->with('Sukses', "Data Berhasil Diinput");
     }
 
     /**
@@ -76,9 +58,10 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_jenis)
     {
-        //
+        $jenis_jawaban = Jenis::find($id_jenis);
+        return view('jenis.edit', compact('jenis_jawaban'));
     }
 
     /**
@@ -88,9 +71,10 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_jenis)
     {
-        //
+        Jenis::whereId($id_jenis)->update(['jenis_jawaban' => $request->jenis_jawaban]);
+        return redirect()->route('jenis.index')->with('Sukses', 'Data Berhasil Diupdate');
     }
 
     /**

@@ -35,6 +35,30 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('jenis.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-check-square"></i>
+              <p>
+                Jenis Jawaban
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="data-combobox.php" class="nav-link">
+              <i class="nav-icon fas fa-list-alt"></i>
+              <p>
+                Data Combobox
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="kategori-soal.php" class="nav-link">
+              <i class="nav-icon fas fa-folder"></i>
+              <p>
+                Kategori Soal
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('profile.index') }}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
@@ -43,7 +67,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="konfigurasi-web.php>" class="nav-link">
+            <a href="{{ route('konfigurasi.index') }}" class="nav-link">
               <i class="nav-icon fas fa-cog"></i>
               <p>
                 Konfigurasi Website
@@ -51,7 +75,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="user-setting.blade.php" class="nav-link">
+            <a href="{{ route('pengaturan.index') }}" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Pengaturan User
