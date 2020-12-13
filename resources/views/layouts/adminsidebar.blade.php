@@ -43,7 +43,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="data-combobox.php" class="nav-link">
+            <a href="{{ route('combobox.index') }}" class="nav-link">
               <i class="nav-icon fas fa-list-alt"></i>
               <p>
                 Data Combobox
@@ -51,10 +51,26 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="kategori-soal.php" class="nav-link">
+            <a href="{{ route('kategori.index') }}" class="nav-link">
               <i class="nav-icon fas fa-folder"></i>
               <p>
                 Kategori Soal
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('petunjuk.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-info-circle"></i>
+              <p>
+                Petunjuk
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('soal.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-file-alt"></i>
+              <p>
+                Soal
               </p>
             </a>
           </li>

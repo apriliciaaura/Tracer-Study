@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Jenis;
+use App\Models\Kategori;
 
-class JenisController extends Controller
+class KategoriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class JenisController extends Controller
      */
     public function index()
     {
-        $jenis_jawaban = DB::table('jenis_jawaban');
-        return view('jenis.index', ['jenis_jawaban' => $jenis_jawaban]);
+        $kategori_soal = DB::table('kategori_soal');
+        return view('kategori.index', ['kategori_soal' => $kategori_soal]);
     }
 
     /**
@@ -26,7 +26,7 @@ class JenisController extends Controller
      */
     public function create()
     {
-        return view('jenis.create');
+        return view('kategori.create');
     }
 
     /**
@@ -37,8 +37,8 @@ class JenisController extends Controller
      */
     public function store(Request $request)
     {
-        Jenis::create(['jenis_jawaban' => $request->jenis_jawaban]);
-        return redirect()->route('jenis.index')->with('Sukses', "Data Berhasil Diinput");
+        Kategori::create(['kategori' => $request->kategori]);
+        return redirect()->route('kategori.index')->with('Sukses', "Data Berhasil Diinput");
     }
 
     /**
@@ -58,10 +58,10 @@ class JenisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_jenis)
+    public function edit($id_kategori)
     {
-        $jenis_jawaban = Jenis::find($id_jenis);
-        return view('jenis.edit', compact('jenis_jawaban'));
+        $kategori_soal = Kategori::find($id_kategori);
+        return view('kategori.edit', compact('kategori_soal'));
     }
 
     /**
@@ -71,16 +71,16 @@ class JenisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_jenis)
+    public function update(Request $request, $id_kategori)
     {
         $request->validate([
-            'jenis_jawaban' => 'required',
+            'kategori' => 'required',
         ]);
 
-        $jenis_jawaban = Jenis::find($id_jenis);
-        $jenis_jawaban->jenis_jawaban = $request->input('jenis_jawaban');
-        $jenis_jawaban->save();
-       return redirect()->route('jenis.index');
+        $kategori_soal = Kategori::find($id_kategori);
+        $kategori_soal->kategori = $request->input('kategori');
+        $kategori_soal->save();
+       return redirect()->route('kategori.index');
     }
 
     /**
@@ -89,8 +89,10 @@ class JenisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id_kategori)
     {
-        //
+        $kategori_soal = Kategori::findOrFail($id_kategori);
+        $kategori_soal->delete();
+        return redirect()->route('kategori.index');
     }
 }

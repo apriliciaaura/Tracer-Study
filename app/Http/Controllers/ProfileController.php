@@ -16,8 +16,8 @@ class ProfileController extends Controller
     public function index(Request $request)
     {   
         $search = $request->get('search');
-        $data_alumni = DB::table('data_alumni')->paginate(2);
-        return view('profile.index', ['data_alumni' => $data_alumni]);
+        $profile = DB::table('profile')->paginate(2);
+        return view('profile.index', ['profile' => $profile]);
     }
 
     /**
@@ -35,11 +35,11 @@ class ProfileController extends Controller
     {
         $cari = $request->cari;
  
-        $data_alumni = DB::table('data_alumni')
+        $profile = DB::table('profile')
         ->where('nama','like',"%".$cari."%")
         ->paginate(2);
  
-        return view('profile.index',['data_alumni' => $data_alumni]);
+        return view('profile.index',['profile' => $profile]);
  
     }
 

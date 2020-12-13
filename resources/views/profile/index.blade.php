@@ -78,15 +78,15 @@
                               <th>Tahun Lulus</th>
                               <th style="text-align: center;vertical-align: middle;">Aksi</th>
                             </tr>
-                            @foreach($data_alumni as $key => $alumni)
+                            @foreach($profile as $key => $p)
                             <tr>
                               <td>{{$key+1}}</td>
-                              <td>{{$alumni->nim}}</td>
-                              <td>{{$alumni->nama}}</td>
-                              <td>{{$alumni->program_studi}}</td>
-                              <td>{{$alumni->no_hp}}</td>
-                              <td>{{$alumni->email}}</td>
-                              <td>{{$alumni->tahun_lulus}}</td>
+                              <td>{{$p->nim}}</td>
+                              <td>{{$p->nama}}</td>
+                              <td>{{$p->program_studi}}</td>
+                              <td>{{$p->no_hp}}</td>
+                              <td>{{$p->email}}</td>
+                              <td>{{$p->tahun_lulus}}</td>
                               <td style="text-align: center;vertical-align: middle;">
                                 <a href="{{ route('profile.detail') }}" class="btn btn-success">
                                   <i class="fas fa-info-circle"></i>
@@ -102,12 +102,12 @@
 
                     <div style="margin-top:30px;" class="row">
                       <div class="col-sm-12 col-md-5">
-                        <div class="dataTables_info" role="status" id="example1_info">Showing {{ $data_alumni->currentPage() }} to {{ $data_alumni->total() }} of {{ $data_alumni->perPage() }} entries</div>
+                        <div class="dataTables_info" role="status" id="example1_info">Showing {{ $profile->currentPage() }} to {{ $profile->total() }} of {{ $profile->perPage() }} entries</div>
                       </div>
 
                       <div class="col-sm-12 col-md-7">
                         <div class="dataTables_paginate paging_simple_numbers" role="status" id="example1_paginate">
-                            {{ $data_alumni->links() }}
+                            {{ $profile->links() }}
                         </div>
                       </div>
                     </div>

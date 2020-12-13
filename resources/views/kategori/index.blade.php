@@ -1,33 +1,32 @@
 @extends('layouts.adminmain')
 @section('content')
 
-<!-- Content Wrapper. Contains page content -->
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Pengaturan User</h1>
+            <h1>Kategori Soal</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-              <li class="breadcrumb-item active">Pengaturan User</li>
+              <li class="breadcrumb-item active">Kategori Soal</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             <div class="card card-outline card-success">
                 <div class="card-header">
                     <h1 class="card-title">
-                        <i class="nav-icon fas fa-user"></i>   
-                        Daftar User
+                        <i class="nav-icon fas fa-folder"></i>   
+                        List Kategori Soal
                     </h1>
                 </div>
                 <div class="card-body">
@@ -35,9 +34,9 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="dataTables_wrapper dt-bootstrap4">
-                                    <a href="{{ route('pengaturan.create') }}" class="btn btn-success float-right">
+                                    <a href="{{ route('kategori.create') }}" class="btn btn-success float-right">
                                     <i class="fas fa-plus"></i>
-                                        Tambah User
+                                        Tambah Kategori Soal
                                     </a>
                                 </div>
                             </div>
@@ -49,32 +48,26 @@
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Nama</th>
-                                            <th>Email</th>
-                                            <th>Level</th>
+                                            <th>Kategori Soal</th>
                                             <th style="text-align: center;vertical-align: middle;">Aksi</th>
                                         </tr>
-                                     @foreach($users->get() as $key => $u)
+                                        @foreach($kategori_soal->get() as $key => $kategori)
                                         <tr>
-                                            <td>{{$key+1}}</td>
-                                            <td>{{$u->name}}</td>
-                                            <td>{{$u->email}}</td>
-                                            <td>{{$u->level}}</td>
-                                        <td style="text-align: center;vertical-align: middle;">
-                                                <a href="{{ route('pengaturan.edit', ['id_user' => $u->id_user]) }}" class="btn btn-warning">
+                                          <td>{{$key+1}}</td>
+                                          <td>{{$kategori->kategori}}</td>
+                                            <td style="text-align: center;vertical-align: middle;">
+                                                <a href="{{ route('kategori.edit', ['id_kategori' => $kategori->id_kategori]) }}" class="btn btn-sm btn-warning">
                                                 <i class="far fa-edit"></i>
                                                     Edit
                                                 </a>
-                                                <a href="{{ route('pengaturan.delete', ['id_user' => $u->id_user]) }}" class="btn btn-danger" onclick="return confirm('Delete data?');">
+                                                <a href="{{ route('kategori.delete', ['id_kategori' => $kategori->id_kategori]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Delete data?');">
                                                 <i class="far fa-trash-alt"></i>
-                                                    Delete
+                                                    Hapus
                                                 </a>
                                             </td>
                                         </tr>
-                                        @endforeach
-                                         </thead>
-                                        <tr>
-                                    </tbody>
+                                         @endforeach
+                                    </thead>
                                 </table>
                             </div>
                         </div>
@@ -83,6 +76,8 @@
             </div>
         </div>
     </section>
+    <!-- /.content -->
   </div>
+  <!-- /.content-wrapper -->
 
 @endsection()

@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Jenis;
+use App\Models\Petunjuk;
 
-class JenisController extends Controller
+class PetunjukController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class JenisController extends Controller
      */
     public function index()
     {
-        $jenis_jawaban = DB::table('jenis_jawaban');
-        return view('jenis.index', ['jenis_jawaban' => $jenis_jawaban]);
+        $petunjuk = Petunjuk::all();
+        return view('petunjuk.index', ['petunjuk' => $petunjuk]);
     }
 
     /**
@@ -26,7 +26,7 @@ class JenisController extends Controller
      */
     public function create()
     {
-        return view('jenis.create');
+        //
     }
 
     /**
@@ -37,8 +37,7 @@ class JenisController extends Controller
      */
     public function store(Request $request)
     {
-        Jenis::create(['jenis_jawaban' => $request->jenis_jawaban]);
-        return redirect()->route('jenis.index')->with('Sukses', "Data Berhasil Diinput");
+        //
     }
 
     /**
@@ -58,10 +57,10 @@ class JenisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_jenis)
+    public function edit($id_petunjuk)
     {
-        $jenis_jawaban = Jenis::find($id_jenis);
-        return view('jenis.edit', compact('jenis_jawaban'));
+        $petunjuk = Petunjuk::find($id_petunjuk);
+        return view('petunjuk.edit', compact('petunjuk'));
     }
 
     /**
@@ -71,16 +70,16 @@ class JenisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_jenis)
+    public function update(Request $request, $id_petunjuk)
     {
         $request->validate([
-            'jenis_jawaban' => 'required',
+            'isi' => 'required',
         ]);
 
-        $jenis_jawaban = Jenis::find($id_jenis);
-        $jenis_jawaban->jenis_jawaban = $request->input('jenis_jawaban');
-        $jenis_jawaban->save();
-       return redirect()->route('jenis.index');
+        $petunjuk = Petunjuk::find($id_petunjuk);
+        $petunjuk->isi = $request->input('isi');
+        $petunjuk->save();
+       return redirect()->route('petunjuk.index');
     }
 
     /**

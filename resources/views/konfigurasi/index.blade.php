@@ -31,13 +31,12 @@
                 </h3>
             </div>
           <div class="card-body">
-            <form action="/konfigurasi/update">
+            <form action="{{ route('konfigurasi.store') }}" method="POST" role="form" id="quickForm">
               @csrf
               @foreach($konfigurasi_web as $key => $konfigurasi) 
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nama Situs</label>
-                    <form action="" method="post">
                       <input type="text" name="nama_website" class="form-control" id="exampleInputEmail1" value="{{ $konfigurasi->nama_website }}" placeholder="">
                   </div>
                   <div class="form-group">
@@ -68,9 +67,7 @@
                     <label for="exampleInputPassword1">Deskripsi Situs</label>
                     <input type="deskripsi_situs" id="exampleInputPassword1" class="form-control" value="{{ $konfigurasi->deskripsi_situs }}" cols="30" rows="8"></textarea>
                   </div>
-
               @endforeach()
-
                     <div style="margin-top: 40px;" class="form-group">
                       <button type="submit" class="btn btn-success">
                           <i style="margin-right:5px;" class="fas fa-save"></i>

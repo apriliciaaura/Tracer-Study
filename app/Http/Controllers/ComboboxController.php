@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Jenis;
+use App\Models\Combobox;
 
-class JenisController extends Controller
+class ComboboxController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class JenisController extends Controller
      */
     public function index()
     {
-        $jenis_jawaban = DB::table('jenis_jawaban');
-        return view('jenis.index', ['jenis_jawaban' => $jenis_jawaban]);
+        $data_combobox = DB::table('data_combobox');
+        return view('combobox.index', ['data_combobox' => $data_combobox]);
     }
 
     /**
@@ -26,7 +26,7 @@ class JenisController extends Controller
      */
     public function create()
     {
-        return view('jenis.create');
+        return view('combobox.create');
     }
 
     /**
@@ -37,8 +37,8 @@ class JenisController extends Controller
      */
     public function store(Request $request)
     {
-        Jenis::create(['jenis_jawaban' => $request->jenis_jawaban]);
-        return redirect()->route('jenis.index')->with('Sukses', "Data Berhasil Diinput");
+        Combobox::create(['nama' => $request->nama]);
+        return redirect()->route('combobox.index')->with('Sukses', "Data Berhasil Diinput");
     }
 
     /**
@@ -58,10 +58,10 @@ class JenisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_jenis)
+    public function edit($id_combobox)
     {
-        $jenis_jawaban = Jenis::find($id_jenis);
-        return view('jenis.edit', compact('jenis_jawaban'));
+        $data_combobox = Combobox::find($id_combobox);
+        return view('combobox.edit', compact('data_combobox'));
     }
 
     /**
@@ -71,16 +71,16 @@ class JenisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_jenis)
+    public function update(Request $request, $id_combobox)
     {
         $request->validate([
-            'jenis_jawaban' => 'required',
+            'nama' => 'required',
         ]);
 
-        $jenis_jawaban = Jenis::find($id_jenis);
-        $jenis_jawaban->jenis_jawaban = $request->input('jenis_jawaban');
-        $jenis_jawaban->save();
-       return redirect()->route('jenis.index');
+        $data_combobox = Combobox::find($id_combobox);
+        $data_combobox->nama = $request->input('nama');
+        $data_combobox->save();
+       return redirect()->route('combobox.index');
     }
 
     /**
@@ -89,8 +89,10 @@ class JenisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id_combobox)
     {
-        //
+        $data_combobox = Combobox::findOrFail($id_combobox);
+        $data_combobox->delete();
+        return redirect()->route('combobox.index');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsers extends Migration
+class CreateKategoriSoal extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateUsers extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
+        Schema::create('kategori_soal', function (Blueprint $table) {
+            $table->bigIncrements('id_kategori');
+            $table->string('kategori', 255);
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateUsers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('kategori_soal');
     }
 }
