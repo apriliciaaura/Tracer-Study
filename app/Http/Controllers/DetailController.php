@@ -27,8 +27,7 @@ class DetailController extends Controller
      */
     public function create(Request $request)
     {
-        Detail::create($request->all());
-        return view('detail.index')->with('Sukses', "Data Berhasil Diinput");
+        //
     }
 
     /**
@@ -71,10 +70,14 @@ class DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_detail)
+    public function edit(Request $request, $id_detail)
     {
-        $detail_combobox = Detail::find($id_detail);
-        return view('detail.index', compact('detail_combobox'));
+        if($request->isMethod('POST')){
+            $data = $request->all();
+
+            Detail::where(['id_detail'=>$id_detail])->update(['nilai'=>$data['nilai'], 'keterangan'=>$data['keterangan'], 'no_urut'=>$data['no_urut']]);
+            return redirect()->back();
+        }
     }
 
     /**
@@ -86,18 +89,13 @@ class DetailController extends Controller
      */
     public function update(Request $request, $id_detail)
     {
-        $request->validate([
-            'nilai' => 'required',
-            'keterangan' => 'required',
-            'no_urut' => 'required',
-        ]);
+        $detail = Detail::where('nilai', $request->get('nilai'))
+                ->update([
+                    'keterangan' => $request->get('keterangan'),
+                    'no_urut' => $request->get('no_urut')
+                ]);
 
-        $detail_combobox = Detail::find($id_detail);
-        $detail_combobox->nilai = $request->input('nilai');
-        $detail_combobox->keterangan = $request->input('keterangan');
-        $detail_combobox->keterangan = $request->input('no_urut');
-        $detail_combobox->save();
-       return redirect()->route('detail.index');
+        return redirect()->route('detail.index');
     }
 
     /**

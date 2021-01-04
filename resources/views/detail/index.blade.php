@@ -78,10 +78,9 @@
                                             <td style="text-align:center;">{{$detail->no_urut}}</td>
                                             <td style="text-align: center;vertical-align: middle;">
                                                 
-                                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-primary">
+                                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#exampleModal-{{$detail->id_detail}}">
                                                 <i class="far fa-edit"></i>
                                                     Edit
-                                                </a>
                                                 </button>
                                                 <a href="{{ route('detail.delete', ['id_detail' => $detail->id_detail]) }}" class="btn btn-sm btn-danger">
                                                 <i class="far fa-trash-alt"></i>
@@ -121,20 +120,20 @@
                   <span aria-hidden="true">&times;</span></button>
               </div>
               <div class="modal-body" style="background:#fff; color:#000;">
-                <form action="/detail/create" method="POST" role="form" id="quickForm" enctype="multipart/form-data">
+                <form action="{{ route('detail.store') }}" method="POST" role="form" id="quickForm" enctype="multipart/form-data">
                 @csrf
                     <div class="card-body">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Nilai</label>
-                        <input type="text" name="nilai" class="form-control" id="exampleInputEmail1" placeholder="">
+                        <input type="text" name="nilai" class="form-control" placeholder="">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Keterangan</label>
-                        <input type="text" name="keterangan" class="form-control" id="exampleInputPassword1" placeholder="">
+                        <input type="text" name="keterangan" class="form-control" placeholder="">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">No. Urut</label>
-                        <input type="text" name="no_urut" class="form-control" id="exampleInputPassword1" placeholder="">
+                        <input type="text" name="no_urut" class="form-control" placeholder="">
                       </div>
                       <div class="form-group">
                         <button type="submit" class="btn btn-success float-right">Save Changes</button>
@@ -147,8 +146,8 @@
       </div>
 
 
-
-      <div class="modal fade" id="modal-primary">
+      @foreach($detail_combobox->get() as $key => $data)
+      <div class="modal fade" id="exampleModal-{{ $data->id_detail}}">
         <div class="modal-dialog">
           <div class="modal-content bg-primary">
             <div class="modal-header" style="background:#ffc107; color:#000;">
@@ -160,21 +159,20 @@
                 <span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body" style="background:#fff; color:#000;">
-              <form action="/detail/update" method="POST" role="form" id="quickForm" enctype="multipart/form-data">
-                <input type="hidden" name="_method" value="PUT">
-                           @csrf
+              <form action="{{ url('edit'. $data->id_detail) }}" method="POST">
+                @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nilai</label>
-                    <input type="text" class="form-control" name="nilai" id="exampleInputEmail1" value="{{ $detail->nilai}}">
+                    <input type="text" class="form-control" name="nilai" value="{{$data->nilai}}">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Keterangan</label>
-                    <input type="text" class="form-control" name="keterangan" id="exampleInputEmail1" value="{{ $detail->keterangan}}">
+                    <input type="text" class="form-control" name="keterangan" value="{{$data->keterangan}}">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">No. Urut</label>
-                    <input type="text" class="form-control" name="no_urut" id="exampleInputEmail1" value="{{ $detail->no_urut}}">
+                    <input type="text" class="form-control" name="no_urut" value="{{$data->no_urut}}">
                   </div>
                   <div class="form-group">
                     <button type="submit" class="btn btn-warning float-right">Save Changes</button>
@@ -192,8 +190,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-
-    
+   @endforeach
   
 @endsection()
+

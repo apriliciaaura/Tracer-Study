@@ -31,7 +31,7 @@
                 </h3>
             </div>
           <div class="card-body">
-            <form action="{{ route('konfigurasi.store') }}" method="POST" role="form" id="quickForm">
+            <form action="{{ route('konfigurasi.update') }}" method="POST" role="form" id="quickForm">
               @csrf
               @foreach($konfigurasi_web as $key => $konfigurasi) 
                 <div class="card-body">

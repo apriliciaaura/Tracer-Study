@@ -87,11 +87,9 @@
       </div>
     </section>
   </div>
-@endsection
 
-@section('ckeditor')
-<script src="{{asset('admin/assets/ckeditor/ckeditor.js')}}"></script>
-<script>
+  @section('ckeditor')
     CKEDITOR.replace('soal');
-</script>
-@endsection 
+  @endsection 
+
+@endsection()

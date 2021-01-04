@@ -74,7 +74,7 @@
                               <td>{{$key+1}}</td>
                               <td>{{$s->kode_soal}}</td>
                               <td>{{$s->soal}}</td>
-                              <td>{{$s->kategori_id}}</td>
+                              <td>{{$s->kategori}}</td>
                               <td>{{$s->no_urut}}</td>
                               <td style="text-align: center;vertical-align: middle;">
                                     <a href="{{ route('jawaban.index') }}" class="btn btn-sm btn-success">

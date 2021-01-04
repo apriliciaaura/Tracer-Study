@@ -61,4 +61,4 @@
   </div>
   <!-- /.content-wrapper -->
   
-@endsection()
+@endsection

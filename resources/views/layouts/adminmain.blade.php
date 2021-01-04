@@ -26,6 +26,14 @@
   @yield('content')
 </div>
 
+ <!-- Datatable -->
+@yield('datatablecss')
+  <!-- Font Awesome -->
+<script src="{{asset('assets/dist/js/demo.js')}}"></script>
+
+@yield('datatablejs')
+@yield('ckeditor')
+
 <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Sistem Tracer Study - Vokasi UB Malang</b>
@@ -48,5 +56,9 @@
 <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
+<script>
+    CKEDITOR.replace('petunjuk');
+</script>
 </body>
 </html>

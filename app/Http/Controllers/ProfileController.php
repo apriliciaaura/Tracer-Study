@@ -36,11 +36,11 @@ class ProfileController extends Controller
         $cari = $request->cari;
  
         $profile = DB::table('profile')
-        ->where('nama','like',"%".$cari."%")
+        ->where('nama', 'LIKE', '%'.$cari.'%')
+        ->orWhere('tahun_lulus', 'LIKE', '%'.$cari.'%')
         ->paginate(2);
  
         return view('profile.index',['profile' => $profile]);
- 
     }
 
     public function create()

@@ -1,10 +1,6 @@
 @extends('layouts.adminmain')
-
-@section('title')
-    Edit Soal | Tracer Study
-@endsection
-
 @section('content')
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -92,4 +88,4 @@
 <script>
     CKEDITOR.replace('soal');
 </script>
-@endsection 
+@endsection()

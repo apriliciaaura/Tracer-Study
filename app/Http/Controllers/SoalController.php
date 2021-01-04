@@ -16,13 +16,8 @@ class SoalController extends Controller
      */
     public function index()
     {
-        $soal = DB::table('soal');
+        $soal = DB::table('soal')->join('kategori_soal', 'id_kategori', '=', 'soal.kategori_id');
         return view('soal.index', ['soal' => $soal]);
-    }
-
-    public function detail()
-    {
-        return view('soal.detail');
     }
 
     /**

@@ -92,96 +92,26 @@
                                             <th>Keterangan</th>
                                             <th style="text-align: center;vertical-align: middle;">Aksi</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
+                                     @foreach($jawaban->get() as $key => $j)
                                         <tr>
-                                            <td>Radiobutton</td>
-                                            <td>f21</td>
-                                            <td>1</td>
-                                            <td></td>
-                                            <td>Sangat Besar</td>
+                                            <td>{{$j->jenis_jawaban}}</td>
+                                            <td>{{$j->kode_jawaban}}</td>
+                                            <td>{{$j->nilai}}</td>
+                                            <td>{{$j->data_combobox}}</td>
+                                            <td>{{$j->keterangan}}</td>
                                             <td style="text-align: center;vertical-align: middle;">
-                                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-lg-edit">
+                                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#exampleModal-{{$j->id_jawaban}}">
                                                   <i class="far fa-edit"></i>
                                                     Edit
                                                 </button>
-                                                <a href="/hapus-jawaban" class="btn btn-sm btn-danger">
+                                                <a href="{{ route('jawaban.delete', ['id_jawaban' => $j->id_jawaban]) }}" class="btn btn-sm btn-danger">
                                                 <i class="far fa-trash-alt"></i>
                                                     Hapus
                                                 </a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>Radiobutton</td>
-                                            <td>f21</td>
-                                            <td>2</td>
-                                            <td></td>
-                                            <td>Besar</td>
-                                            <td style="text-align: center;vertical-align: middle;">
-                                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-lg-edit">
-                                                  <i class="far fa-edit"></i>
-                                                    Edit
-                                                </button>
-                                                <a href="/hapus-jawaban" class="btn btn-sm btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                                    Hapus
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Radiobutton</td>
-                                            <td>f21</td>
-                                            <td>3</td>
-                                            <td></td>
-                                            <td>Cukup Besar</td>
-                                            <td style="text-align: center;vertical-align: middle;">
-                                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-lg-edit">
-                                                  <i class="far fa-edit"></i>
-                                                    Edit
-                                                </button>
-                                                <a href="/hapus-jawaban" class="btn btn-sm btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                                    Hapus
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Radiobutton</td>
-                                            <td>f21</td>
-                                            <td>4</td>
-                                            <td></td>
-                                            <td>Kurang</td>
-                                            <td style="text-align: center;vertical-align: middle;">
-                                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-lg-edit">
-                                                  <i class="far fa-edit"></i>
-                                                    Edit
-                                                </button>
-                                                <a href="/hapus-jawaban" class="btn btn-sm btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                                    Hapus
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Radiobutton</td>
-                                            <td>f21</td>
-                                            <td>5</td>
-                                            <td></td>
-                                            <td>Tidak Sama Sekali</td>
-                                            <td style="text-align: center;vertical-align: middle;">
-                                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-lg-edit">
-                                                  <i class="far fa-edit"></i>
-                                                    Edit
-                                                </button>
-                                                <a href="/hapus-jawaban" class="btn btn-sm btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                                    Hapus
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                    </tfoot>
+                                         @endforeach
+                                      </thead>
                                 </table>
                             </div>
                         </div>
@@ -191,6 +121,7 @@
         </div>
     </section>
 
+    
     {{-- Modal Tambah Jawaban --}}
     <div class="modal fade" id="modal-lg">
         <div class="modal-dialog modal-lg">
@@ -204,46 +135,47 @@
                 <span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body" style="background:#fff; color:#000;">
-              <form action="" role="form" id="quickForm">
+             <form action="{{ route('jawaban.store') }}" method="POST" role="form" id="quickForm" enctype="multipart/form-data">
+                @csrf
                   <div class="card-body">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Jenis Jawaban</label>
-                      <Select name="jenis_jawaban" class="form-control">
-                          <option value="">Text</option>
-                          <option value="">Text Area</option>
-                          <option value="">Combobox</option>
-                      </Select>
+                      <select class="form-control" name="jenis_id">
+                        @foreach($jawaban->get() as $key => $j)
+                        <option value="{{ $j->id_jenis }}"> {{ $j->jenis_jawaban }}</option>
+                        @endforeach
+                      </select>
                       </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Kode Jawaban</label>
-                      <input type="text" name="kode_jawaban" class="form-control" id="exampleInputPassword1" placeholder="Contoh : f21">
+                      <input type="text" name="kode_jawaban" class="form-control" placeholder="">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Nilai</label>
-                      <input type="text" name="nilai_jawaban" class="form-control" id="exampleInputPassword1" placeholder="Contoh : 1">
+                      <input type="text" name="nilai" class="form-control" placeholder="">
                     </div>
                     <div class="form-group">
                       <label for="">Data Combobox</label>
-                      <select name="data_combobx" class="form-control" id="">
-                          <option value="">Tidak Ada</option>
-                          <option value="">Program Studi</option>
-                          <option value="">Perguruan Tinggi</option>
-                          <option value="">Tahun Lulus</option>
+                      <select name="data_combobox" class="form-control" id="data_combobox">
+                          <option value="Tidak Ada">Tidak Ada</option>
+                          <option value="Program Studi">Program Studi</option>
+                          <option value="Perguruan Tinggi">Perguruan Tinggi</option>
+                          <option value="Tahun Lulus">Tahun Lulus</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="">Keterangan</label>
-                      <textarea name="keterangan_jawaban" id="" cols="10" rows="5"></textarea>
+                      <input class="form-control" type="text" name="keterangan" placeholder="">
                     </div>
                     <div class="form-group">
                       <label for="">No. Urut</label>
-                      <input class="form-control" type="text" name="no_urut" placeholder="Contoh : 1" id="">
+                      <input class="form-control" type="text" name="no_urut" placeholder="">
                     </div>
                     <div class="form-group">
                       <label for="">Status</label>
-                      <select class="form-control" name="stats" id="">
-                          <option value="">Aktif</option>
-                          <option value="">Tidak Aktif</option>
+                      <select class="form-control" name="status" id="status">
+                          <option value="Aktif">Aktif</option>
+                          <option value="Tidak Aktif">Tidak Aktif</option>
                       </select>
                     </div>
                     <div class="form-group">
@@ -257,8 +189,8 @@
     </div>
     {{-- /.modal tambah jawaban --}}
 
-    {{-- Modal Edit Jawaban --}}
-    <div class="modal fade" id="modal-lg-edit">
+    @foreach($jawaban->get() as $key => $data)
+    <div class="modal fade" id="exampleModal-{{ $data->id_jawaban}}">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header bg-warning">
@@ -271,45 +203,46 @@
             </button>
           </div>
           <div class="modal-body">
-          <form action="" method="get">
+          <form action="{{ url('edit'. $data->id_jawaban) }}" method="POST">
+            @csrf
             <div class="form-group">
               <label for="exampleInputEmail1">Jenis Jawaban</label>
-              <Select name="jenis_jawaban" class="form-control">
-                <option value="">Text</option>
-                <option value="">Text Area</option>
-                <option value="">Combobox</option>
-              </Select>
+              <select class="form-control" name="jenis_id">
+              @foreach($jawaban->get() as $key => $j)
+                <option value="{{ $j->id_jenis }}"> {{ $j->jenis_jawaban }}</option>
+              @endforeach
+              </select>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Kode Jawaban</label>
-              <input type="text" name="kode_jawaban" class="form-control" id="exampleInputPassword1" placeholder="Contoh : f21">
+              <input type="text" name="kode_jawaban" class="form-control" value="{{$data->kode_jawaban}}">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Nilai</label>
-              <input type="text" name="nilai_jawaban" class="form-control" id="exampleInputPassword1" placeholder="Contoh : 1">
+              <input type="text" name="nilai" class="form-control" value="{{$data->nilai}}">
             </div>
             <div class="form-group">
               <label for="">Data Combobox</label>
-              <select name="data_combobx" class="form-control" id="">
-                  <option value="">Tidak Ada</option>
-                  <option value="">Program Studi</option>
-                  <option value="">Perguruan Tinggi</option>
-                  <option value="">Tahun Lulus</option>
+              <select name="data_combobox" class="form-control" name="data_combobox" value="{{$data->data_combobox}}">
+                  <option value="Tidak Ada">Tidak Ada</option>
+                  <option value="Program Studi">Program Studi</option>
+                  <option value="Perguruan Tinggi">Perguruan Tinggi</option>
+                  <option value="Tahun Lulus">Tahun Lulus</option>
               </select>
             </div>
             <div class="form-group">
               <label for="">Keterangan</label>
-              <textarea name="edit_keterangan_jawaban" id="" cols="10" rows="5"></textarea>
+              <input class="form-control" type="text" name="keterangan" value="{{$data->keterangan}}">
             </div>
             <div class="form-group">
               <label for="">No. Urut</label>
-              <input class="form-control" type="text" name="no_urut" placeholder="Contoh : 1" id="">
+              <input class="form-control" type="text" name="no_urut" value="{{$data->no_urut}}">
             </div>
             <div class="form-group">
               <label for="">Status</label>
-              <select class="form-control" name="stats" id="">
-                  <option value="">Aktif</option>
-                  <option value="">Tidak Aktif</option>
+              <select class="form-control" name="status" value="{{$data->status}}">
+                 <option value="Aktif">Aktif</option>
+                 <option value="Tidak Aktif">Tidak Aktif</option>
               </select>
             </div>
             <div class="form-group">
@@ -322,12 +255,10 @@
     </div>
     {{-- /.modal Edit Jawaban --}}
   </div>
-@endsection
+  @endforeach
 
 @section('ckeditor')
-<script src="{{asset('admin/assets/ckeditor/ckeditor.js')}}"></script>
-<script>
-    CKEDITOR.replace('keterangan_jawaban');
-    CKEDITOR.replace('edit_keterangan_jawaban');
-</script>
 @endsection 
+
+@endsection
+

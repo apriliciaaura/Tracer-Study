@@ -67,11 +67,7 @@
     </section>
   </div>
 
-@endsection
-
 @section('ckeditor')
-<script src="{{asset('admin/assets/ckeditor/ckeditor.js')}}"></script>
-<script>
-    CKEDITOR.replace('petunjuk');
-</script>
 @endsection 
+
+@endsection
