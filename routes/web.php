@@ -74,3 +74,9 @@ Route::post('jawaban', ['as' => 'jawaban.store', 'uses' => 'JawabanController@st
 Route::match(['get', 'post'], '/edit{id_jawaban}', 'JawabanController@edit');
 Route::put('jawaban/edit/{id_jawaban}', ['as' => 'jawaban.update', 'uses' => 'JawabanController@update']);
 Route::get('jawaban/delete/{id_jawaban}', ['as' => 'jawaban.delete', 'uses' => 'JawabanController@delete']);
+
+Route::get('import', ['as' => 'import.index', 'uses' => 'ImportController@index']);
+Route::post('import', ['as' => 'profile.import', 'uses' => 'ImportController@import']);
+
+Route::get('export', ['as' => 'export.index', 'uses' => 'ExportController@index']);
+Route::post('export', ['as' => 'profile.export', 'uses' => 'ExportController@export']);

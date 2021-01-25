@@ -75,6 +75,22 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('import.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-upload"></i>
+              <p>
+                Import Data Tracer Study
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('export.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-download"></i>
+              <p>
+                Export Data Tracer Study
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('profile.index') }}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
