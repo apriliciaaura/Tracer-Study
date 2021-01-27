@@ -57,8 +57,6 @@
 <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
-<script>
-    CKEDITOR.replace('petunjuk');
-</script>
+
 </body>
 </html>

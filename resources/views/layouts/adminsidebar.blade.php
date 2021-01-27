@@ -99,6 +99,22 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('pengumuman.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-bullhorn"></i>
+              <p>
+                Pengumuman
+             </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/berita" class="nav-link">
+              <i class="nav-icon fas fa-newspaper"></i>
+              <p>
+                Berita
+             </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('konfigurasi.index') }}" class="nav-link">
               <i class="nav-icon fas fa-cog"></i>
               <p>

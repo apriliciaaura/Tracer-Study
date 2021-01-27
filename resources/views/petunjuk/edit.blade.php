@@ -48,8 +48,7 @@
                        <form action="" method="get">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Petunjuk :</label>
-                                <textarea class="form-control" name="isi" id="exampleInputEmail1" cols="50" rows="50" value="{{ $petunjuk->isi}}" placeholder="">
-                                </textarea>
+                                <textarea id="ckeditor" class="form-control" name="isi" rows="10" cols="50"> {{$petunjuk->isi}}</textarea>
                             </div>
                             <div class="form-group" style="margin-top:30px;">
                                 <button type="submit" class="btn btn-md btn-success float-right">
@@ -68,6 +67,11 @@
   </div>
 
 @section('ckeditor')
-@endsection 
+<script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
 
+<script>
+    CKEDITOR.replace('ckeditor');
+</script>
+
+@endsection
 @endsection

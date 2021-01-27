@@ -56,7 +56,7 @@
                   </div>
                   <div class="form-group">
                       <label for="">Soal</label>
-                      <textarea class="form-control" type="textarea" name="soal" id="exampleInputEmail1" cols="30" rows="10"> </textarea>
+                      <textarea id="ckeditor" class="form-control" name="soal" rows="10" cols="50"> {{$soal->soal}}</textarea>
                   </div>
                   <div class="form-group">
                       <label for="">No. Urut</label>
@@ -84,8 +84,9 @@
 @endsection
 
 @section('ckeditor')
-<script src="{{asset('admin/assets/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
+
 <script>
-    CKEDITOR.replace('soal');
+    CKEDITOR.replace('ckeditor');
 </script>
 @endsection()

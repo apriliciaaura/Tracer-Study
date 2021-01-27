@@ -50,7 +50,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Soal</label>
-                                <textarea class="form-control" name="soal" id="exampleInputEmail1" cols="30" rows="10"></textarea>
+                                <textarea id="ckeditor" class="form-control" name="soal" rows="10" cols="50"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Kategori Kelas</label>
@@ -88,8 +88,12 @@
     </section>
   </div>
 
-  @section('ckeditor')
-    CKEDITOR.replace('soal');
-  @endsection 
+@section('ckeditor')
+<script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
 
+<script>
+    CKEDITOR.replace('ckeditor');
+</script> 
+
+@endsection()
 @endsection()

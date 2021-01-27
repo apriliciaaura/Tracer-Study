@@ -80,3 +80,17 @@ Route::post('import', ['as' => 'profile.import', 'uses' => 'ImportController@imp
 
 Route::get('export', ['as' => 'export.index', 'uses' => 'ExportController@index']);
 Route::post('export', ['as' => 'profile.export', 'uses' => 'ExportController@export']);
+
+Route::get('pengumuman', ['as' => 'pengumuman.index', 'uses' => 'PengumumanController@index']);
+Route::get('pengumuman/create', ['as' => 'pengumuman.create', 'uses' => 'PengumumanController@create']);
+Route::post('pengumuman', ['as' => 'pengumuman.store', 'uses' => 'PengumumanController@store']);
+Route::get('pengumuman/edit/{id_pengumuman}', ['as' => 'pengumuman.edit', 'uses' => 'PengumumanController@edit']);
+Route::put('pengumuman/edit/{id_pengumuman}', ['as' => 'pengumuman.update', 'uses' => 'PengumumanController@update']);
+Route::get('pengumuman/delete/{id_pengumuman}', ['as' => 'pengumuman.delete', 'uses' => 'PengumumanController@delete']);
+
+Route::get('berita', ['as' => 'berita.index', 'uses' => 'BeritaController@index']);
+Route::get('berita/create', ['as' => 'berita.create', 'uses' => 'BeritaController@create']);
+Route::post('berita', ['as' => 'berita.store', 'uses' => 'BeritaController@store']);
+Route::get('berita/edit/{id_berita}', ['as' => 'berita.edit', 'uses' => 'BeritaController@edit']);
+Route::put('berita/edit/{id_berita}', ['as' => 'berita.update', 'uses' => 'BeritaController@update']);
+Route::get('berita/delete/{id_berita}', ['as' => 'berita.delete', 'uses' => 'BeritaController@delete']);
