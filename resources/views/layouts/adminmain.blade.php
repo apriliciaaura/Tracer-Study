@@ -26,9 +26,10 @@
   @yield('content')
 </div>
 
- <!-- Datatable -->
+<!-- Datatable -->
 @yield('datatablecss')
-  <!-- Font Awesome -->
+
+<!-- Font Awesome -->
 <script src="{{asset('assets/dist/js/demo.js')}}"></script>
 
 @yield('datatablejs')
@@ -56,6 +57,12 @@
 <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- panggil jquery -->
+<script type="text/javascript" src="assets/jquery/jquery-3.1.1.min.js"></script>
+<!-- panggil ckeditor.js -->
+<script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
+<!-- panggil adapter jquery ckeditor -->
+<script type="text/javascript" src="assets/ckeditor/adapters/jquery.js"></script>
 <script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
 
 </body>

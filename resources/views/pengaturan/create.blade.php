@@ -32,7 +32,7 @@
                 </h3>
             </div>
           <div class="card-body">
-            <form action="{{ route('pengaturan.store') }}" method="POST" role="form" id="quickForm">
+            <form action="{{ route('pengaturan.store') }}" method="POST" role="form" enctype="multipart/form-data" id="quickForm">
               @csrf
                 <div class="card-body">
                   <div class="form-group">
@@ -42,8 +42,6 @@
                       </a>
                   </div>
                   <br>
-                  <form action="{{ route('pengaturan.store') }}" method="POST" role="form" enctype="multipart/form-data" id="quickForm">
-              @csrf
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nama</label>
                     <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="">

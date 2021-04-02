@@ -31,8 +31,6 @@
                 </h3>
             </div>
           <div class="card-body">
-            <form action="{{ route('konfigurasi.update') }}" method="POST" role="form" id="quickForm" enctype="multipart/form-data">
-              @csrf
               @foreach($konfigurasi_web as $key => $konfigurasi) 
                 <div class="card-body">
                   <div class="form-group">
@@ -68,12 +66,7 @@
                     <input type="deskripsi_situs" id="exampleInputPassword1" class="form-control" value="{{ $konfigurasi->deskripsi_situs }}" cols="30" rows="8"></textarea>
                   </div>
               @endforeach()
-                    <div style="margin-top: 40px;" class="form-group">
-                      <button type="submit" class="btn btn-success">
-                          <i style="margin-right:5px;" class="fas fa-save"></i>
-                          Simpan
-                      </button>
-                    </div>
+                    
             </form>
         </div>  
                        

@@ -58,7 +58,10 @@
 
                 <!-- Card Catatan -->
                 <div class="card catatan bg-success">
-                  <h3>Catatan :</h3>
+                  <h3>
+                    <i class="fas fa-info-circle"></i>
+                    Catatan :
+                  </h3>
                   <ul>
                     <li>Digunakan untuk import data tracer study dalam format excell</li>
                   </ul>

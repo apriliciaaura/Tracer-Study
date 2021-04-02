@@ -80,7 +80,7 @@ class KategoriController extends Controller
         $kategori_soal = Kategori::find($id_kategori);
         $kategori_soal->kategori = $request->input('kategori');
         $kategori_soal->save();
-       return redirect()->route('kategori.index');
+        return redirect()->route('kategori.index');
     }
 
     /**

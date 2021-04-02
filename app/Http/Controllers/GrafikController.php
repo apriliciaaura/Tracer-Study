@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Profile;
+use App\Models\Grafik;
 
-class ProfileController extends Controller
+class GrafikController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,38 +14,33 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   
+    {
         $search = $request->get('search');
-        $profile = DB::table('profile')->paginate(10);
-        return view('profile.index', ['profile' => $profile]);
+        $grafik = DB::table('grafik')->paginate(10);
+        return view('grafik.index', ['grafik' => $grafik]);
     }
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function detail()
+    public function create()
     {
-        return view('profile.detail');
+        return view('grafik.create');
     }
 
     public function cari(Request $request)
     {
         $cari = $request->cari;
  
-        $profile = DB::table('profile')
-        ->where('nama', 'LIKE', '%'.$cari.'%')
-        ->orWhere('tahun_lulus', 'LIKE', '%'.$cari.'%')
+        $grafik = DB::table('grafik')
+        ->where('judul', 'LIKE', '%'.$cari.'%')
+        ->orWhere('soal', 'LIKE', '%'.$cari.'%')
         ->paginate(10);
  
-        return view('profile.index',['profile' => $profile]);
-    }
-
-    public function create()
-    {
-        
+        return view('grafik.index',['grafik' => $grafik]);
     }
 
     /**
@@ -56,7 +51,23 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-       
+        $request->validate([
+            'judul' =>  'required',
+            'soal' => 'required',
+            'jenis_grafik' => 'required',
+            'jenis_label' => 'required',
+            'tahun_lulus' => 'required',
+        ]);
+        $form_data = array(
+            'judul'    =>  $request->judul,
+            'soal'     =>  $request->soal,
+            'jenis_grafik'    =>  $request->jenis_grafik,
+            'jenis_label'    =>  $request->jenis_label,
+            'tahun_lulus'    =>  $request->tahun_lulus,
+        );
+
+        Grafik::create($form_data);
+        return redirect()->route('grafik.index')->with('success', 'Data Added Successfully.');
     }
 
     /**
@@ -99,8 +110,10 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id_grafik)
     {
-        //
+        $grafik = Grafik::findOrFail($id_grafik);
+        $grafik->delete();
+        return redirect()->route('grafik.index');
     }
 }

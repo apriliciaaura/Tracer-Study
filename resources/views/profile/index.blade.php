@@ -66,7 +66,7 @@
                     </div>
                     <div class="row">
                       <div class="col-sm-12">
-                        <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                        <table style="text-align:center;" id="datatable" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                           <thead>
                             <tr>
                               <th>No.</th>
@@ -111,6 +111,18 @@
                         </div>
                       </div>
                     </div>
+                      <hr>
+
+                      <div class="card catatan bg-success">
+                                    <h3>
+                                        <i class="fas fa-info-circle"></i>
+                                        Catatan :
+                                    </h3>
+                                    <ul>
+                                        <li>Digunakan untuk melihat data tracer study mahasiswa</li>
+                                        <li>Untuk melihat detail per no mahasiswa di aksi detail</li>
+                                    </ul>
+                       </div>
                   </div>
               </div>
               <!-- /.card-body -->
@@ -127,6 +139,8 @@
 @endsection()
 
 <script>
+  $(document).ready(function(){
+    $('#datatable').DataTable();
   $(function () {
     $("#example1").DataTable({
       "responsive": true,
@@ -141,6 +155,7 @@
       "autoWidth": false,
       "responsive": true,
     });
+  });
   });
 </script>
 

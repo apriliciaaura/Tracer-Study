@@ -103,10 +103,19 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+         <div class="card catatan bg-success">
+                            <h3>
+                                <i class="fas fa-info-circle"></i>
+                                Catatan :
+                            </h3>
+                            <ul>
+                              <li>Untuk menambah nilai combobox klik tombol tambah jawaban</li>
+                              <li>Untuk mengedit dan menghapus nilai combobox dapat dilakukan di masing-masing nilai</li>
+                            </ul>
+                        </div>
+                      </div>
+                      </div>
 
         <div class="modal fade" id="modal-success">
           <div class="modal-dialog">

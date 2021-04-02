@@ -44,7 +44,7 @@
                         <br>
                         <div class="row">
                             <div class="col-sm-12">
-                                <table class="table table-bordered table-striped dataTable table-hover" role="grid" aria-describedby="example1_info">
+                                <table style="text-align:center;" class="table table-bordered table-striped dataTable table-hover" role="grid" aria-describedby="example1_info">
                                     <thead>
                                         <tr>
                                             <th>No.</th>
@@ -73,11 +73,21 @@
                                         @endforeach
                                          </thead>
                                         <tr>
-                                    </tbody>
-                                    <tfoot>
                                 </table>
                             </div>
                         </div>
+
+                        <hr>
+                        <div class="card catatan bg-success">
+                        <h3>
+                            <i class="fas fa-info-circle"></i>
+                            Catatan :
+                        </h3>
+                        <ul>
+                            <li>Data Combobox merupakan data-data yang ditampilkan dalam soal dalam bentuk combobox</li>
+                            <li>Data combobox harus ditambahkan sebelum membuat soal</li>
+                        </ul>
+                    </div>
                     </div>
                 </div>
             </div>

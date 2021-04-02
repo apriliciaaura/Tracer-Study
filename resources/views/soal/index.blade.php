@@ -69,7 +69,7 @@
                               <th>No. Urut</th>
                               <th style="text-align: center;vertical-align: middle;">Aksi</th>
                             </tr>
-                            @foreach($soal->get() as $key => $s)
+                            @foreach($soal as $key => $s)
                             <tr>
                               <td>{{$key+1}}</td>
                               <td>{{$s->kode_soal}}</td>
@@ -97,12 +97,28 @@
                       </div>
                     </div>
 
-                    <div style="margin-top:30px; margin-right:2px;" class="row float-right">
-                        <div class="dataTables_paginate paging_simple_numbers float-right" role="status" id="example1_paginate">
-                          <ul class="pagination">
-
-                          </ul>
+                    <div style="margin-top:30px;" class="row">
+                      <div class="col-sm-12 col-md-5">
+                        <div class="dataTables_info" role="status" id="example1_info">Showing {{ $soal->currentPage() }} to {{ $soal->total() }} of {{ $soal->perPage() }} entries</div>
                       </div>
+
+                      <div class="col-sm-12 col-md-7">
+                        <div class="dataTables_paginate paging_simple_numbers" role="status" id="example1_paginate">
+                            {{ $soal->links() }}
+                        </div>
+                      </div>
+                    </div>
+
+                    <hr>
+                    <div class="card catatan bg-success">
+                        <h3>
+                            <i class="fas fa-info-circle"></i>
+                            Catatan :
+                        </h3>
+                        <ul>
+                            <li>Soal berisi kumpulan soal-soal tracer study</li>
+                            <li>Untuk menambahkan jawaban pada soal klik icon detail soal</li>
+                        </ul>
                     </div>
                   </div>
               </div>

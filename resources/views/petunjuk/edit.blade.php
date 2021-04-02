@@ -66,6 +66,8 @@
     </section>
   </div>
 
+@endsection
+
 @section('ckeditor')
 <script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
 
@@ -73,5 +75,4 @@
     CKEDITOR.replace('ckeditor');
 </script>
 
-@endsection
 @endsection

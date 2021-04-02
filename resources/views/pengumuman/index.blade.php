@@ -49,8 +49,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 mt-4">
-                            <table id="example"
-                                class="table table-hover datatable table-bordered table-striped dataTable dtr-inline"
+                            <table style="text-align:center;" id="example" class="table table-hover datatable table-bordered table-striped dataTable dtr-inline"
                                 style="width:100%">
                                 <thead>
                                     <tr>
@@ -64,8 +63,8 @@
                                     <tr>
                                           <td>{{$key+1}}</td>
                                           <td><?=date('d F Y', strtotime($pe->tanggal));?></td>
-                                          <td>{{$pe->judul}}</td>
-                                          <td>{{$pe->isi}}</td>
+                                          <td>{!!$pe->judul!!}</td>
+                                          <td>{!!$pe->isi!!}</td>
                                         <td style="text-align:center;">
                                             <a href="{{ route('pengumuman.edit', ['id_pengumuman' => $pe->id_pengumuman]) }}" class="btn btn-sm btn-warning">
                                                 <i class="far fa-edit"></i>
@@ -85,7 +84,10 @@
                     <hr>
                     <!-- Card Catatan -->
                     <div class="card catatan bg-success">
-                        <h3>Catatan :</h3>
+                        <h3>
+                            <i class="fas fa-info-circle"></i>
+                                Catatan :
+                        </h3>
                         <ul>
                             <li>Digunakan untuk membuat/menambahkan pengumuman pada halaman tracer study</li>
                             <li>Klik tombol "Tambah Pengumuman" untuk menambahkan pengumuman</li>

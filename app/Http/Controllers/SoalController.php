@@ -16,7 +16,7 @@ class SoalController extends Controller
      */
     public function index()
     {
-        $soal = DB::table('soal')->join('kategori_soal', 'id_kategori', '=', 'soal.kategori_id');
+        $soal = DB::table('soal')->join('kategori_soal', 'id_kategori', '=', 'soal.kategori_id')->paginate(10);
         return view('soal.index', ['soal' => $soal]);
     }
 

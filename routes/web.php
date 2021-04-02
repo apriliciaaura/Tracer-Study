@@ -10,10 +10,11 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/login','AuthController@login');
+Route::get('/login','AuthController@login')->name('login');
 Route::post('/postlogin','AuthController@postlogin');
 Route::get('/logout', 'AuthController@logout');
 
+//Route::group(['middleware' => 'auth'], function(){
 Route::get('profile', ['as' => 'profile.index', 'uses' => 'ProfileController@index']);
 Route::get('profile/detail', ['as' => 'profile.detail', 'uses' => 'ProfileController@detail']);
 Route::get('profile/cari', 'ProfileController@cari');
@@ -22,8 +23,6 @@ Route::get('change-password', 'AuthController@changePassword')->name('change-pas
 Route::post('update-password', 'AuthController@updatePassword');
 
 Route::get('konfigurasi', ['as' => 'konfigurasi.index', 'uses' =>'KonfigurasiController@index']);
-Route::post('konfigurasi', ['as' => 'konfigurasi.store', 'uses' => 'KonfigurasiController@store']);
-Route::get('konfigurasi/update', ['as' => 'konfigurasi.update', 'uses' =>'KonfigurasiController@update']);
 
 Route::get('pengaturan', ['as' => 'pengaturan.index', 'uses' => 'PengaturanController@index']);
 Route::get('pengaturan/create', ['as' => 'pengaturan.create', 'uses' => 'PengaturanController@create']);
@@ -94,3 +93,10 @@ Route::post('berita', ['as' => 'berita.store', 'uses' => 'BeritaController@store
 Route::get('berita/edit/{id_berita}', ['as' => 'berita.edit', 'uses' => 'BeritaController@edit']);
 Route::put('berita/edit/{id_berita}', ['as' => 'berita.update', 'uses' => 'BeritaController@update']);
 Route::get('berita/delete/{id_berita}', ['as' => 'berita.delete', 'uses' => 'BeritaController@delete']);
+
+Route::get('grafik', ['as' => 'grafik.index', 'uses' => 'GrafikController@index']);
+Route::get('grafik/cari', 'GrafikController@cari');
+Route::get('grafik/create', ['as' => 'grafik.create', 'uses' => 'GrafikController@create']);
+Route::post('grafik', ['as' => 'grafik.store', 'uses' => 'GrafikController@store']);
+Route::get('grafik/delete/{id_grafik}', ['as' => 'grafik.delete', 'uses' => 'GrafikController@delete']);
+//});

@@ -45,7 +45,7 @@
                         <br>
                         <div class="row">
                             <div class="col-sm-12">
-                                <table class="table table-bordered table-striped dataTable table-hover" role="grid" aria-describedby="example1_info">
+                                <table style="text-align:center;" class="table table-bordered table-striped dataTable table-hover" role="grid" aria-describedby="example1_info">
                                     <thead>
                                         <tr>
                                             <th>No.</th>
@@ -77,6 +77,18 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+
+                        <hr>
+                        <div class="card catatan bg-success">
+                            <h3>
+                                <i class="fas fa-info-circle"></i>
+                                Catatan :
+                            </h3>
+                            <ul>
+                              <li>Hanya bisa diakses oleh SuperAdmin</li>
+                              <li>Untuk mengatur user baik admin maupun penguji</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
